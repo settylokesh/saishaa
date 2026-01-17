@@ -40,7 +40,7 @@ export function Footer() {
             </p>
             <div className="mt-6 flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/saishaaart"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-brand-accent/50 hover:bg-brand-accent transition-colors text-brand-primaryDark"
