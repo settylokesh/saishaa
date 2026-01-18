@@ -5,7 +5,8 @@ import type { CartItem, Product } from '@/types';
 interface CartState {
   items: CartItem[];
   isDrawerOpen: boolean;
-  
+  cartAnimationTrigger: number;
+
   // Actions
   addItem: (product: Product, quantity?: number, options?: Record<string, string>) => void;
   removeItem: (productId: string) => void;
@@ -14,7 +15,8 @@ interface CartState {
   toggleDrawer: () => void;
   openDrawer: () => void;
   closeDrawer: () => void;
-  
+  triggerCartAnimation: () => void;
+
   // Computed
   getTotalItems: () => number;
   getTotalPrice: () => number;
@@ -26,6 +28,7 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
       items: [],
       isDrawerOpen: false,
+      cartAnimationTrigger: 0,
 
       addItem: (product, quantity = 1, options) => {
         set((state) => {
@@ -47,9 +50,9 @@ export const useCartStore = create<CartState>()(
             items: [...state.items, { product, quantity, selectedOptions: options }],
           };
         });
-        
-        // Open drawer when item is added
-        get().openDrawer();
+
+        // Trigger cart animation instead of opening drawer
+        get().triggerCartAnimation();
       },
 
       removeItem: (productId) => {
@@ -85,6 +88,10 @@ export const useCartStore = create<CartState>()(
 
       closeDrawer: () => {
         set({ isDrawerOpen: false });
+      },
+
+      triggerCartAnimation: () => {
+        set((state) => ({ cartAnimationTrigger: state.cartAnimationTrigger + 1 }));
       },
 
       getTotalItems: () => {

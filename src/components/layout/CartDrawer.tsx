@@ -6,7 +6,7 @@ import { Button } from '@/components/ui';
 import { formatPrice } from '@/utils/cn';
 
 export function CartDrawer() {
-  const { items, isDrawerOpen, closeDrawer, removeItem, updateQuantity, getTotalPrice } =
+  const { items, isDrawerOpen, closeDrawer, removeItem, updateQuantity, getTotalPrice, getTotalItems } =
     useCartStore();
 
   // Lock body scroll when drawer is open
@@ -60,7 +60,7 @@ export function CartDrawer() {
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-brand-border/20">
               <h2 className="text-lg font-semibold text-gray-800">
-                Your Cart ({items.length})
+                Your Cart ({getTotalItems()})
               </h2>
               <button
                 onClick={closeDrawer}
