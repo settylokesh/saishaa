@@ -31,3 +31,24 @@ npm-debug.log*
 
 # Cache
 .cache/
+.turbo/
+.vercel/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Package manager
+.pnpm-store/
+.yarn/
+yarn-error.log
+
+# Misc
+*.local
+*.orig
